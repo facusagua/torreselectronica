@@ -24,7 +24,7 @@
 
 							<p>
 								Te registraste correctamente en nuestro sitio. Podras realizar compras en nuestro sitio web.<br>
-								Si queres comenzar ahora,  <a href="registro.php">inicia sesion</a>.
+								Si queres comenzar ahora, <a href="registro.php">inicia sesion</a>.
 							</p>
 
 							<hr>

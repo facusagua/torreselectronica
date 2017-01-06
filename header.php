@@ -131,17 +131,29 @@
 				</div>
 			</div>
 			<div id="header" class="sticky clearfix">
-				<div class="search-box over-header">
-					<a id="closeSearch" href="#" class="glyphicon glyphicon-remove"></a>
-				</div>
 				<header id="topNav">
 					<div class="container">
-
+                        
 						<!-- Mobile Menu Button -->
 						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
 							<i class="fa fa-bars"></i>
 						</button>
 						<ul class="pull-right nav nav-pills nav-second-main">
+                            <li class="search">
+								<a href="javascript:;">
+									<i class="fa fa-search"></i>
+								</a>
+								<div class="search-box" style="display: none;">
+									<form action="searchProd.php" method="get">
+										<div class="input-group">
+											<input type="text" name="search" placeholder="Buscar Producto" class="form-control">
+											<span class="input-group-btn">
+												<button class="btn btn-primary" type="submit">Buscar</button>
+											</span>
+										</div>
+									</form>
+								</div> 
+							</li>
 							<li class="quick-cart">
 								<a href="#">
 									<span class="badge badge-aqua btn-xs badge-corner"><?php  $carrito = new Carrito();
@@ -229,7 +241,7 @@
 										</a>
 									</li>
                                     <li class="dropdown"><!-- PAGES -->
-										<a class="dropdown-toggle" href="#">
+										<a class="dropdown-toggle" href="contacto.php">
 											CONSULTANOS
 										</a>
 									</li>

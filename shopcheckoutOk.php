@@ -1,37 +1,38 @@
 <?php
     include 'header.php';
-    $nombre = $_GET['nombre'];
+    //$nombre = $_GET['nombre'];
 ?>
-			<section class="page-header page-header-xs" style="background-color: gold;">
+		<section class="page-header page-header-xs" style="background-color: gold;">
 				<div class="container">
+
+					<h1></h1>
+
 					<!-- breadcrumbs -->
 					<ol class="breadcrumb">
 						<li><a href="#">Home</a></li>
-						<li class="active">Registro</li>
+						<li><a href="#">Shop</a></li>
+						<li class="active">Checkout</li>
 					</ol><!-- /breadcrumbs -->
 
 				</div>
 			</section>
-			<!-- /PAGE HEADER -->
-
-<section>
+			<!-- -->
+			<section>
 				<div class="container">
 					
 					<!-- CHECKOUT FINAL MESSAGE -->
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3>Gracias, <?php echo $nombre; ?>.</h3>
+							<h3>Gracias por su compra.</h3>
 
 							<p>
-								Te registraste correctamente en nuestro sitio. Podras realizar compras en nuestro sitio web.<br>
-								Si queres comenzar ahora,  <a href="registro.php">inicia sesion</a>.
+				            Su compra fue procesada correctamente. En breve nos comunicaremos con uds. para acordar la fecha de entrega.-<br/>
+							
 							</p>
-
-							<hr>
-
+							<hr />
 							<p>
-								Muchas gracias por confiar en nosotros,<br>
-								<strong>Torres Electronica.</strong>
+								Gracias por confiar en nosotros,<br />
+								<strong>TORRES ELECTRONICA.-.</strong>
 							</p>
 						</div>
 					</div>

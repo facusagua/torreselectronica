@@ -96,11 +96,11 @@
 						<!-- ITEM -->
 						<?php while($Prod = mysql_fetch_assoc($queryProd)){ ?>
                         <li class="col-lg-3 col-sm-4">
-							<div class="shop-item" style="background-color:#eef0f2; height:450px;">
+							<div class="shop-item" style="background-color:#eef0f2; height:300px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 								<div class="thumbnail noborder nopadding">
 									<!-- product image(s) -->
 									<a class="shop-item-image" href="articulo.php?id_pro=<?php echo $Prod['id_pro']; ?>">
-										<img src="Administrador/assets/uploads/files/<?php echo $Prod['imagen']; ?>" alt="" width="200px" height="200px">
+										<img src="Administrador/assets/uploads/files/<?php echo $Prod['imagen']; ?>" style="height:150px;">
 									</a>
 									<div class="shop-option-over">
 										<a class="btn btn-default" href="articulo.php?id_pro=<?php echo $Prod['id_pro']; ?>"><i class="fa fa-cart-plus size-18"></i></a>
@@ -108,11 +108,11 @@
 								</div>
 								<div class="shop-item-summary text-center">
 									<h2 class="size-14"><?php echo substr($Prod['nombreProducto'],0,35); ?></h2>
-									<div>
+									<div style="height:80px;">
 										<?php echo $Prod['descripcionCorta']; ?>
 									</div>
                                     <?php if($login == 1){ ?>
-									<div class="shop-item-price">
+									<div class="shop-item-price" style="background-color:gold;">
 										$ <?php if($tipoUser == 1){echo $Prod['precio_cliente'];}if($tipoUser == 2){echo $Prod['precio_gremio'];} ?>
 									</div>
                                     <?php } ?>

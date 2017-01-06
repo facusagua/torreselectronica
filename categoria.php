@@ -9,6 +9,10 @@
         $sqlCat = "SELECT * FROM productos p JOIN categorias c ON (p.id_cate = c.id_cate) WHERE p.id_cate = '$cat'";
      }
     $queryProd = mysql_query($sqlCat) or die(mysql_error());
+
+    $sqlSlider = "SELECT * FROM slider";
+    $querySlider = mysql_query($sqlSlider) or die(mysql_error());
+    $Slider = mysql_fetch_assoc($querySlider);
 ?>
 <!-- SLIDER -->
 			<section class="padding-top-40">
@@ -17,17 +21,11 @@
 					<!-- OWL SLIDER -->
 					<div class="owl-carousel buttons-autohide controlls-over nomargin" data-plugin-options='{"items": 1, "autoHeight": false, "navigation": true, "pagination": false, "transitionStyle":"fade", "progressBar":"true"}'>
 
+						<?php do{?>    
 						<div>
-							<img class="img-responsive" src="assets/images/banner-1.png" alt="">
+							<img class="img-responsive" src="Administrador/assets/uploads/slider/<?php echo $Slider['imagen']; ?>" alt="">
 						</div>
-                        <div>
-							<img class="img-responsive" src="assets/images/banner-4.png" alt="">
-						</div>
-						<a href="#">
-							<img class="img-responsive" src="assets/images/banner-2.jpg" alt="">
-						</a>
-					</div>
-					<!-- /OWL SLIDER -->
+                       <?php }while($Slider = mysql_fetch_assoc($querySlider)) ?>
 
 
 					<!-- INFO BAR -->
@@ -103,11 +101,11 @@
 						<!-- ITEM -->
 						<?php while($Prod = mysql_fetch_assoc($queryProd)){ ?>
                         <li class="col-lg-3 col-sm-4">
-							<div class="shop-item" style="background-color:#eef0f2; height:450px;">
+							<div class="shop-item" style="background-color:#eef0f2; height:300px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 								<div class="thumbnail noborder nopadding">
 									<!-- product image(s) -->
 									<a class="shop-item-image" href="articulo.php?id_pro=<?php echo $Prod['id_pro']; ?>">
-										<img src="Administrador/assets/uploads/files/<?php echo $Prod['imagen']; ?>" alt="" width="200px" height="200px">
+										<img src="Administrador/assets/uploads/files/<?php echo $Prod['imagen']; ?>" style="height:150px;">
 									</a>
 									<div class="shop-option-over">
 										<a class="btn btn-default" href="#"><i class="fa fa-cart-plus size-18"></i></a>
@@ -115,11 +113,11 @@
 								</div>
 								<div class="shop-item-summary text-center">
 									<h2 class="size-14"><?php echo substr($Prod['nombreProducto'],0,35); ?></h2>
-									<div>
+									<div style="height:80px;">
 										<?php echo $Prod['descripcionCorta']; ?>
 									</div>
 									<?php if($login == 1){ ?>
-									<div class="shop-item-price">
+									<div class="shop-item-price" style="background-color:gold;">
 										$ <?php if($tipoUser == 1){echo $Prod['precio_cliente'];}if($tipoUser == 2){echo $Prod['precio_gremio'];}  ?>
 									</div>
                                     <?php } ?>

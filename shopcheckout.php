@@ -23,7 +23,7 @@
 			<section>
 				<div class="container">
 					<!-- CHECKOUT -->
-					<form class="row clearfix">
+					<form >
 
 						<div class="col-lg-7 col-sm-7">
 							<div class="heading-title">
@@ -81,7 +81,7 @@
 						</div>
                     </form>            
 
-                    <form class="row clearfix" method="GET" action="vender.php">
+                    <form  method="GET" action="vender.php">
 						<div class="col-lg-5 col-sm-5">
 							<div class="heading-title">
 								<h4>Metodo de Pago</h4>
@@ -106,6 +106,10 @@
 														<i></i> <span class="weight-300">Mercado Pago</span>
 													</label>
 												</div>
+                                                <div class="form-group col-lg-12 nomargin clearfix">
+                                                  <label for="comment">Observaciones ( preferencias o cambio de direccion de entrega ):</label>
+                                                  <textarea name="coment" class="form-control" rows="5" id="comment"></textarea>
+                                                </div>
 											</div>
 										<input name="totalCompra" type="hidden" value="<?php echo $totalCompra;?>" />
 										</div>

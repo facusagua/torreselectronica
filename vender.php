@@ -1,16 +1,18 @@
 <?php
 include "connect.php";
-include "Carrito.php"; 
+include "Carrito.php";
+require_once('lib/mercadopago.php');
 session_start();
-echo $totalCompra = $_GET['totalCompra'];
-echo $metodoPago = $_GET['metodoPago'];
+$totalCompra = $_GET['totalCompra'];
+$metodoPago = $_GET['metodoPago'];
+$coment = $_GET['coment'];
 
-echo $idUser = $_SESSION['idUsuario'];
-echo $nomUser = $_SESSION['nomUsuario'];
+$idUser = $_SESSION['idUsuario'];
+$nomUser = $_SESSION['nomUsuario'];
 
-echo $productos = "INSERT INTO ventas (id_cli,metodo,totalCompra) VALUES ('$idUser','$metodoPago','$totalCompra')";
+$productos = "INSERT INTO ventas (id_cli,metodo,totalCompra,observaciones) VALUES ('$idUser','$metodoPago','$totalCompra','$coment')";
 $sqlProductos =  mysql_query($productos) or die(mysql_error());
-echo $uid=mysql_insert_id();
+$uid=mysql_insert_id();
 
 $carrito = new Carrito();
 $carro = $carrito->get_content();
@@ -28,7 +30,25 @@ if($metodoPago == "local"){
     header("location:shopcheckoutfinal.php?nombre=".$nomUser);
 }
 if($metodoPago == "mercadopago"){
-   $carrito->destroy();
-    header("location:http://www.mercadopago.com.ar");
+    $monto = (real) $totalCompra;
+    $title = "Compra Web Torres Electronica - ID Venta:".$uid;
+    
+$mp = new MP('4558579727573235', 'zPdxvQRJk4HClx8bZfGoeDiomg6cIqyn');
+$preference_data = array(
+	"items" => array(
+		array(
+            "id" => $uid,
+			"title" => $title,
+			"quantity" => 1,
+			"currency_id" => "ARS", // Available currencies at: https://api.mercadopago.com/currencies
+			"unit_price" => $monto
+		)
+	)
+);
+    
+$preference = $mp->create_preference($preference_data);
+   
+    header("location:".$preference['response']['init_point']);
+    $carrito->destroy(); 
 }
 ?>
